@@ -4,13 +4,14 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const schema = yup.object().shape({
     gender: yup.string().required("Пол обязателен"),
     age: yup.number().typeError("Введите возраст").required("Возраст обязателен"),
     height: yup.number().typeError("Введите рост").required("Рост обязателен"),
     weight: yup.number().typeError("Введите вес").required("Вес обязателен"),
-    lifestyle: yup.string().required("Опишите ваш образ жизни"),
+    life_style: yup.string().required("Опишите ваш образ жизни"),
 });
 const Form = () => {
     const navigate = useNavigate();
@@ -25,6 +26,23 @@ const Form = () => {
     const onSubmit = (data) => {
         navigate("/test");
         console.log(data);
+        // const postData = async (data) => {
+        //     try {
+        //         const response = await axios.post(
+        //             'http://10.95.4.108:5000/user',
+        //             { ...data , user_id: '12375876879'},
+        //             {
+        //                 headers: {
+        //                     'Content-Type': 'application/json',
+        //                 }
+        //             }
+        //         );
+        //         console.log('Response:', response.data);
+        //     } catch (error) {
+        //         console.error('Error:', error.response?.data || error.message);
+        //     }
+        // };
+        // postData(data);
     };
 
     return (
@@ -74,10 +92,10 @@ const Form = () => {
             <div>
                 <textarea
                     placeholder="Образ жизни 
-например:Активный образ жизни, умеренные физические нагрузки 3–4 раза в неделю, работа за компьютером, питание сбалансированное, но с периодическим перекусами. Сон 6–7 часов, стресс — умеренный, алкоголь — по праздникам, курения нет."{...register("lifestyle")}
+например:Активный образ жизни, умеренные физические нагрузки 3–4 раза в неделю, работа за компьютером, питание сбалансированное, но с периодическим перекусами. Сон 6–7 часов, стресс — умеренный, алкоголь — по праздникам, курения нет."{...register("life_style")}
                     className="w-full border rounded px-3 py-2 focus:outline-none h-32"
                 />
-                {errors.lifestyle && (<p className="text-red-500 mt-1">{errors.lifestyle.message}</p>)}
+                {errors.life_style && (<p className="text-red-500 mt-1">{errors.life_style.message}</p>)}
             </div>
             <Button type={'submit'}>
                 Отправить
