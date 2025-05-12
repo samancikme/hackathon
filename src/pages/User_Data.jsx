@@ -14,7 +14,7 @@ const User_Data = () => {
                     </div>
                 </NavLink>
                 <div className='flex flex-col justify-center gap-[24px] items-center'>
-                    <h1 className="text-[#2B8292] font-inter font-bold text-[28px] mt-[32px] text-center">
+                    <h1 className="text-[#2B8292] font-inter font-bold text-[28px] mt-[32px] text-center leading-[30px]">
                         Введите данные запрошенные ниже
                     </h1>
                 </div>

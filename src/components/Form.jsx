@@ -76,7 +76,6 @@ const Form = () => {
                 />
                 {errors.lifestyle && (<p className="text-red-500 mt-1">{errors.lifestyle.message}</p>)}
             </div>
-
             <Button type={'submit'}>
                 Отправить
             </Button>

@@ -2,10 +2,11 @@ import React from 'react'
 import logo from '../../public/image/Med.Ai.svg'
 import Button from '../components/Button'
 import { NavLink } from 'react-router-dom'
+import DA_hi from '../components/animations/DA_hi'
 
 const Home = () => {
     return (
-        <div className='flex flex-col px-[20px]'>
+        <div className='flex flex-col px-[20px] relative'>
             <NavLink to={'/'}>
                 <div className="flex justify-center items-center mt-[80px]">
                     <img className=' w-[150px] py-3 mx-auto' src={logo} alt="" />
@@ -27,6 +28,9 @@ const Home = () => {
                         </Button>
                     </NavLink>
                 </div>
+            </div>
+            <div className=' absolute bottom-[5%] right-[8%] w-max h-max rounded-full'>
+                <DA_hi />
             </div>
         </div>
     )
