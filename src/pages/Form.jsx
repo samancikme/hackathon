@@ -42,7 +42,7 @@ const UserData = () => {
     async function getLang() {
         try {
             const id = await Telegram.WebApp.CloudStorage.getItem('ID');
-            alert('Saqlangan til:', id);
+            return id;
         } catch (error) {
             alert('O‘qishda xatolik:', error);
             return null;
@@ -50,7 +50,9 @@ const UserData = () => {
     }
     const onSubmit = async (data) => {
         const userId = localStorage.getItem("userId");
-       getLang()
+        const lang = await getLang(); // to‘g‘ri chaqirildi
+        alert("Lang:", lang);
+      
 
         const URL = "http://10.95.4.108:5000/user/consult";
         setLoading(true);
