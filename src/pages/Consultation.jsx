@@ -4,9 +4,6 @@ import { NavLink } from 'react-router-dom';
 import Button from '../components/Button';
 
 const Consultation = () => {
-    // if (!localStorage.getItem('consultation') != null) {
-    //     const { consultation } = JSON.parse(localStorage.getItem('consultation'))
-    // }
     const htmlContent = 'consultation';
     return (
         <div className='flex flex-col px-[20px] w-screen h-max pb-[40px]'>
@@ -18,9 +15,11 @@ const Consultation = () => {
             <div className='text-[18px] font-inter text-[#2B8292] leading-[24px] text-center mt-[32px]'>
                 <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
             </div>
-            <Button className={'text-2xl mt-[32px]'}>
-                Назад
-            </Button>
+            <NavLink to={'/history'} className={'w-full flex justify-center items-center font-inter'}>
+                <Button className={'text-2xl mt-[32px] w-full'}>
+                    Назад
+                </Button>
+            </NavLink>
         </div>
     )
 }

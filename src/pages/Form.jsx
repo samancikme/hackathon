@@ -4,7 +4,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import axios from "axios";
 import { NavLink, useNavigate } from "react-router-dom";
-
 import Loading from "../components/Loading";
 import Button from "../components/Button";
 import logo from "../assets/image/MedAi.svg";
@@ -51,12 +50,16 @@ const UserData = () => {
         }
     };
 
+    async function saveData(data) {
+        Telegram.WebApp.CloudStorage.setItem("consultation", data);
+        console.log(data);
+    }
 
 
     const onSubmit = async (data) => {
         getUserId();
         console.log(getUserId());
-        const URL = "http://10.95.4.108:5000/user/consult";
+        const URL = "https://backend-seven-iota-13.vercel.app/bot/exists";
         setLoading(true);
         setError(null);
 
@@ -73,7 +76,8 @@ const UserData = () => {
                     },
                 }
             );
-            navigate("/consultation"); // Sahifani o'zgartirish
+            await saveData(response.data);
+            console.log("Response:", response.data);
         } catch (err) {
             setError(
                 err.response?.data?.message ||
@@ -82,6 +86,7 @@ const UserData = () => {
             );
         } finally {
             setLoading(false);
+            navigate("/consultation");
         }
     };
 
