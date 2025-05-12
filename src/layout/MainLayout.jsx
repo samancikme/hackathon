@@ -18,8 +18,7 @@ const MainLayout = () => {
     // },[])
     // 
     useEffect(() => {
-        const user = window.Telegram?.WebApp?.initDataUnsafe;
-        alert(user);
+        const user = window.Telegram;
         if (user) {
           alert("User ID:", user.id);
         }
