@@ -39,9 +39,19 @@ const UserData = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-
+    async function getLang() {
+        try {
+            const id = await Telegram.WebApp.CloudStorage.getItem('ID');
+            console.log('Saqlangan til:', id);
+            return id;
+        } catch (error) {
+            console.error('O‘qishda xatolik:', error);
+            return null;
+        }
+    }
     const onSubmit = async (data) => {
         const userId = localStorage.getItem("userId");
+       getLang()
 
         const URL = "http://10.95.4.108:5000/user/consult";
         setLoading(true);
@@ -52,7 +62,7 @@ const UserData = () => {
                 URL,
                 {
                     ...data,
-                    user_id: userId || "321312", // fallback agar userId bo'lmasa
+                    user_id: userId || "321312",
                 },
                 {
                     headers: {
@@ -72,8 +82,8 @@ const UserData = () => {
         } catch (err) {
             setError(
                 err.response?.data?.message ||
-                    err.message ||
-                    "Noma'lum xato yuz berdi"
+                err.message ||
+                "Noma'lum xato yuz berdi"
             );
         } finally {
             setLoading(false);

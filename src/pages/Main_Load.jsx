@@ -4,13 +4,22 @@ import image from '../assets/image/MedAi.svg'
 import Home from './Home';
 import { useNavigate } from 'react-router-dom';
 const Main_load = () => {
+
+    async function saveLang(id) {
+        try {
+            await Telegram.WebApp.CloudStorage.setItem('ID', id);
+            console.log('Til muvaffaqiyatli saqlandi:', id);
+        } catch (error) {
+            console.error('Saqlashda xatolik:', error);
+        }
+    }
     const URL = 'http://10.95.4.108:5000/user/consult'
     useEffect(() => {
         const tg = window.Telegram.WebApp;
         const userId = tg.initDataUnsafe.user?.id;
         localStorage.setItem('userId', userId);
+        saveLang(userId)
     }, []);
-
 
     const [showMain, setShowMain] = useState(false);
     const navigate = useNavigate()
