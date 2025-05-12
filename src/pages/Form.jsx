@@ -42,10 +42,10 @@ const UserData = () => {
     async function getLang() {
         try {
             const id = await Telegram.WebApp.CloudStorage.getItem('ID');
-            console.log('Saqlangan til:', id);
+            alert('Saqlangan til:', id);
             return id;
         } catch (error) {
-            console.error('O‘qishda xatolik:', error);
+            alert('O‘qishda xatolik:', error);
             return null;
         }
     }
