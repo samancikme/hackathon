@@ -18,11 +18,14 @@ const MainLayout = () => {
     // },[])
     // 
     useEffect(() => {
-        const user = window.Telegram;
-        if (user) {
-          alert("User ID:", user.id);
-        }
-      }, []);
+        const tg = window.Telegram.WebApp;
+        const userId = tg.initDataUnsafe.user?.id;
+        alert('Telegram User ID:', userId);
+        // const user = window.Telegram;
+        // if (user) {
+        //     alert("User ID:", user.id);
+        // }
+    }, []);
     return (
         <div className='flex h-screen w-screen justify-center select-none bg-white'>
             <Outlet />
