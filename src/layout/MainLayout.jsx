@@ -18,20 +18,13 @@ const MainLayout = () => {
     // },[])
     // 
     useEffect(() => {
-        const tg = window.Telegram.WebApp;
-
-        tg.ready(); // обязательно вызвать
-
-        const user = tg.initDataUnsafe.user;
-
-        alert("Ваш Telegram ID: " + user.id);
-        // const tg = window.Telegram.WebApp;
-        // const userId = tg.initDataUnsafe.user?.id;
-        // alert('Telegram User ID:', userId);
-        // const user = window.Telegram;
-        // if (user) {
-        //     alert("User ID:", user.id);
-        // }
+        if (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initDataUnsafe?.user) {
+            const tg = window.Telegram.WebApp;
+            tg.ready();
+            alert("Ваш Telegram ID: " + tg.initDataUnsafe.user.id);
+        } else {
+            alert("❗️Пожалуйста, откройте приложение через Telegram.");
+        }
     }, []);
     return (
         <div className='flex h-screen w-screen justify-center select-none bg-white'>
