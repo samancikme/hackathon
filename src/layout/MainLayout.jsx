@@ -17,6 +17,12 @@ const MainLayout = () => {
     //     request()
     // },[])
     // 
+    useEffect(() => {
+        const user = window.Telegram?.WebApp?.initDataUnsafe?.user;
+        if (user) {
+          alert("User ID:", user.id);
+        }
+      }, []);
     return (
         <div className='flex h-screen w-screen justify-center select-none bg-white'>
             <Outlet />

@@ -16,10 +16,12 @@ const schema = yup.object().shape({
     life_style: yup.string().required("Опишите ваш образ жизни"),
 });
 const UserData = () => {
-    // const tg = window.Telegram.WebApp;
-    // const user = tg.initDataUnsafe.user;
+    // const user = window.Telegram.WebApp.initDataUnsafe.user;
 
-    // console.log("Foydalanuvchi Telegram ID si:", user.id);
+    // console.log(user.id); // Telegram user ID
+    // console.log(user.username); // Foydalanuvchi username'i
+    // console.log(user.first_name); // Ism
+
 
     const navigate = useNavigate();
     const {
@@ -35,12 +37,6 @@ const UserData = () => {
 
     const onSubmit = (data) => {
         console.log(data);
-        const user = tg?.initDataUnsafe?.user;
-        if (!user) {
-            alert("Foydalanuvchi ma'lumotlari topilmadi");
-            return;
-        }
-
         const postData = async () => {
             setLoading(true);
             setError(null);
