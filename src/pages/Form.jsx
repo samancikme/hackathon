@@ -38,18 +38,19 @@ const UserData = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    async function getLang() {
+    const [userId, setUserId] = useState(null);
+    const getUserId = async () => {
         try {
-            const userId = await Telegram.WebApp.CloudStorage.getItem('ID');
-            return userId;
-        } catch (error) {
-            alert('O‘qishda xatolik:', error);
-            return null;
+            const id = await Telegram.WebApp.CloudStorage.getItem("userId");
+            alert("Saqlangan ID: " + id);
+            setUserId(id);
+        } catch (err) {
+            alert("Xatolik: " + err.message);
         }
-    }
+    };
     const onSubmit = async (data) => {
-        const id = await getLang();
-        console.log(getLang());
+        getUserId();
+        console.log(userId);
         const URL = "http://10.95.4.108:5000/user/consult";
         setLoading(true);
         setError(null);
