@@ -19,8 +19,15 @@ const MainLayout = () => {
     // 
     useEffect(() => {
         const tg = window.Telegram.WebApp;
-        const userId = tg.initDataUnsafe.user?.id;
-        alert('Telegram User ID:', userId);
+
+        tg.ready(); // обязательно вызвать
+
+        const user = tg.initDataUnsafe.user;
+
+        alert("Ваш Telegram ID: " + user.id);
+        // const tg = window.Telegram.WebApp;
+        // const userId = tg.initDataUnsafe.user?.id;
+        // alert('Telegram User ID:', userId);
         // const user = window.Telegram;
         // if (user) {
         //     alert("User ID:", user.id);
