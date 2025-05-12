@@ -6,6 +6,7 @@ import * as yup from "yup";
 import Button from "../components/Button";
 import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
+import logo from '../assets/image/MedAi.svg'
 
 const schema = yup.object().shape({
     gender: yup.string().required("Пол обязателен"),
