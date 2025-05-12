@@ -43,7 +43,6 @@ const UserData = () => {
         try {
             const id = await Telegram.WebApp.CloudStorage.getItem('ID');
             alert('Saqlangan til:', id);
-            return id;
         } catch (error) {
             alert('O‘qishda xatolik:', error);
             return null;
