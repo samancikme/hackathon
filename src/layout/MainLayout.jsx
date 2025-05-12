@@ -18,13 +18,9 @@ const MainLayout = () => {
     // },[])
     // 
     useEffect(() => {
-        const tg = window.Telegram?.WebApp;
-        if (tg && tg.initDataUnsafe?.user) {
-            tg.ready();
-            alert("Ваш Telegram ID: " + tg.initDataUnsafe.user.id);
-        } else {
-            alert("❌ Откройте приложение через Telegram");
-        }
+        const tg = window.Telegram.WebApp;
+        const userId = tg.initDataUnsafe.user?.id;
+        alert("Sizning ID: " + userId);
     }, []);
     return (
         <div className='flex h-screen w-screen justify-center select-none bg-white'>
