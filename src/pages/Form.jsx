@@ -49,7 +49,7 @@ const UserData = () => {
     }
     const onSubmit = async (data) => {
         const id = await getLang();
-        console.log(id);
+        console.log(id.result);
         const URL = "http://10.95.4.108:5000/user/consult";
         setLoading(true);
         setError(null);
