@@ -18,12 +18,12 @@ const MainLayout = () => {
     // },[])
     // 
     useEffect(() => {
-        if (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initDataUnsafe?.user) {
-            const tg = window.Telegram.WebApp;
+        const tg = window.Telegram?.WebApp;
+        if (tg && tg.initDataUnsafe?.user) {
             tg.ready();
             alert("Ваш Telegram ID: " + tg.initDataUnsafe.user.id);
         } else {
-            alert("❗️Пожалуйста, откройте приложение через Telegram.");
+            alert("❌ Откройте приложение через Telegram");
         }
     }, []);
     return (
