@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import Button from "./Button";
+import { useNavigate } from "react-router-dom";
 
 const schema = yup.object().shape({
     gender: yup.string().required("Пол обязателен"),
@@ -12,6 +13,7 @@ const schema = yup.object().shape({
     lifestyle: yup.string().required("Опишите ваш образ жизни"),
 });
 const Form = () => {
+    const navigate = useNavigate();
     const {
         register,
         handleSubmit,
@@ -21,6 +23,7 @@ const Form = () => {
     });
 
     const onSubmit = (data) => {
+        navigate("/test");
         console.log(data);
     };
 

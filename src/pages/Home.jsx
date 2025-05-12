@@ -13,12 +13,12 @@ const Home = () => {
                 </div>
             </NavLink >
             <div className='flex flex-col justify-center gap-[24px] items-center mt-[80px]'>
-                <div className='flex flex-col justify-center items-center gap-3'>
-                    <div className="text-[#2B8292] font-medium text-[50px] text-center leading-[50px] gap-0 mt-[32px]">
+                <div className='flex flex-col justify-center items-center gap-[18px]'>
+                    <div className="text-[#2B8292] font-medium text-[50px] text-center leading-[44px] gap-0 mt-[32px]">
                         <div className=''>Легко - <br /> но по делу</div>
                     </div>
-                    <div className="text-[#2B8292] text-[20px] font-medium font-inter text-center">
-                        Первичная оценка симптомов и анализов— в пару кликов.Чтобы ты знал,с чего начать.
+                    <div className="text-[#2B8292] text-[20px] font-medium font-inter leading-[24px] text-center">
+                        Первичная оценка симптомов и анализов — в пару кликов.Чтобы ты знал,с чего начать.
                     </div>
                 </div>
                 <div className="flex justify-center items-end font-inter">
