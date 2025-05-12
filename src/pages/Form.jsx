@@ -52,7 +52,8 @@ const UserData = () => {
                 setError(err.response?.data?.message || err.message || "Noma'lum xato");
             } finally {
                 setLoading(false);
-                navigate('/consultation')
+                alert('Данные успешно отправлены');
+                // navigate('/consultation')
             }
         };
         postData(URL, data);
