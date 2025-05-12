@@ -7,7 +7,6 @@ const MainLayout = () => {
         if (localStorage.getItem('userId')) {
             const tg = window.Telegram.WebApp;
             const userId = tg.initDataUnsafe.user?.id;
-            localStorage.setItem('userId', userId);
         }
     }, []);
     return (

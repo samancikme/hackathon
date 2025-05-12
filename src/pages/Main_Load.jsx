@@ -17,7 +17,6 @@ const Main_load = () => {
     useEffect(() => {
         const tg = window.Telegram.WebApp;
         const userId = tg.initDataUnsafe.user?.id;
-        localStorage.setItem('userId', userId);
         saveLang(userId)
     }, []);
 

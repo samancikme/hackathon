@@ -9,7 +9,6 @@ import Loading from "../components/Loading";
 import Button from "../components/Button";
 import logo from "../assets/image/MedAi.svg";
 
-// Form validation schema
 const schema = yup.object().shape({
     gender: yup.string().required("Пол обязателен"),
     age: yup
@@ -49,11 +48,8 @@ const UserData = () => {
         }
     }
     const onSubmit = async (data) => {
-        const userId = localStorage.getItem("userId");
-        const lang = await getLang(); // to‘g‘ri chaqirildi
-        alert("Lang:", lang);
-      
-
+        const lang = await getLang();
+        console.log(lang);
         const URL = "http://10.95.4.108:5000/user/consult";
         setLoading(true);
         setError(null);
@@ -71,14 +67,6 @@ const UserData = () => {
                     },
                 }
             );
-
-            // Saqlash localStorage
-            localStorage.setItem(
-                "consultation",
-                JSON.stringify(response.data)
-            );
-
-            alert("Данные успешно отправлены");
             navigate("/consultation"); // Sahifani o'zgartirish
         } catch (err) {
             setError(
