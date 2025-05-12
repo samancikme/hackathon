@@ -2,12 +2,19 @@ import React from 'react'
 import logo from '../assets/image/MedAi.svg'
 import Button from '../components/Button'
 import { NavLink } from 'react-router-dom'
+import { motion, AnimatePresence } from 'framer-motion';
 import DA_hi from '../components/animations/DA_hi'
 
 const Home = () => {
     return (
-        <div className='flex flex-col px-[20px] relative'>
-            <NavLink to={'/'}>
+        <motion.div
+            key="home"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1 }}
+            className='flex flex-col px-[20px] relative'>
+            <NavLink to={'/home'}>
                 <div className="flex justify-center items-center mt-[80px]">
                     <img className=' w-[150px] py-3 mx-auto' src={logo} alt="" />
                 </div>
@@ -32,7 +39,7 @@ const Home = () => {
             <div className=' absolute bottom-[5%] right-[8%] w-max h-max rounded-full'>
                 <DA_hi />
             </div>
-        </div>
+        </motion.div>
     )
 }
 

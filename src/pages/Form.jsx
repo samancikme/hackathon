@@ -16,14 +16,6 @@ const schema = yup.object().shape({
     life_style: yup.string().required("Опишите ваш образ жизни"),
 });
 const UserData = () => {
-    // const user = window.Telegram.WebApp.initDataUnsafe.user;
-
-    // console.log(user.id); // Telegram user ID
-    // console.log(user.username); // Foydalanuvchi username'i
-    // console.log(user.first_name); // Ism
-
-
-    const navigate = useNavigate();
     const {
         register,
         handleSubmit,
@@ -34,22 +26,18 @@ const UserData = () => {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const id = localStorage.getItem('userId');
 
-    const onSubmit = (data) => {
+
+    const onSubmit = (data , id) => {
         console.log(data);
-        const postData = async () => {
+
+        const URL = 'http://10.95.4.108:5000/user/consult'
+        const postData = async (URL) => {
             setLoading(true);
             setError(null);
             try {
-                const response = await axios.post(
-                    'http://10.95.4.108:5000/user/',
-                    { ...data, user_id: user.id },
-                    {
-                        headers: {
-                            'Content-Type': 'application/json'
-                        }
-                    }
-                );
+                const response = await axios.post(URL, { ...data, user_id: id });
                 setData(response.data);
             } catch (err) {
                 setError(err.response?.data?.message || err.message || "Noma'lum xato");
@@ -57,9 +45,9 @@ const UserData = () => {
                 setLoading(false);
             }
         };
-        postData(data);
+        postData(data , id);
+        console.log(data)
     };
-
 
     return (
         <>
@@ -67,7 +55,7 @@ const UserData = () => {
                 <Loading />
                 :
                 <div className="flex flex-col">
-                    <NavLink to={'/'}>
+                    <NavLink to={'/home'}>
                         <div className="flex justify-center items-center mt-[80px]">
                             <img className=' w-[150px] py-3 mx-auto' src={logo} alt="" />
                         </div>
