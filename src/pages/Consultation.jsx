@@ -4,7 +4,9 @@ import { NavLink } from 'react-router-dom';
 import Button from '../components/Button';
 
 const Consultation = () => {
-    const { consultation } = JSON.parse(localStorage.getItem('consultation'))
+    if (!localStorage.getItem('consultation') != null) {
+        const { consultation } = JSON.parse(localStorage.getItem('consultation'))
+    }
     const htmlContent = consultation;
     return (
         <div className='flex flex-col px-[20px] w-screen h-max pb-[40px]'>
