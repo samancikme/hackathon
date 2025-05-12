@@ -27,7 +27,7 @@ const Form = () => {
     return (
         <form
             onSubmit={handleSubmit(onSubmit)}
-            className="flex justify-center flex-col w-full mx-auto space-y-4 p-4 text-sm text-[#228ca6] h-max">
+            className="flex justify-center flex-col w-full mx-auto space-y-4 p-4 text-sm text-[#228ca6] h-max bg-white">
             <div>
                 <select
                     {...register("gender")}
