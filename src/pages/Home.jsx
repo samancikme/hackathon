@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../../public/image/Med.Ai.svg'
+import logo from '../assets/image/MedAi.svg'
 import Button from '../components/Button'
 import { NavLink } from 'react-router-dom'
 import DA_hi from '../components/animations/DA_hi'

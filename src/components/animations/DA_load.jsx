@@ -1,5 +1,5 @@
 import { Player } from '@lottiefiles/react-lottie-player';
-import sticker from '../../../public/animation/DUCK_LOAD.json';
+import sticker from '../../assets/animation/DUCK_LOAD.json';
 function DA_load({className}) {
   return (
     <div className={className}>

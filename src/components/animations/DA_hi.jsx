@@ -1,5 +1,5 @@
 import { Player } from '@lottiefiles/react-lottie-player';
-import sticker from '../../../public/animation/DUCK_HEY.json';
+import sticker from '../../assets/animation/DUCK_HEY.json';
 function DA_hi() {
   return (
     <div className="w-18 h-18">

@@ -1,12 +1,17 @@
 import React from 'react'
-import logo from '../../public/image/Med.Ai.svg'
-import Button from '../components/Button'
+import logo from '../assets/image/MedAi.svg'
 import Form from '../components/Form'
 import { NavLink } from 'react-router-dom'
+import { motion, AnimatePresence } from 'framer-motion';
+
 
 const User_Data = () => {
     return (
-        <div>
+        <motion.div
+            initial={{ opacity: 1 }}
+            animate={{ opacity: 0.8 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8 }}>
             <div className='flex flex-col'>
                 <NavLink to={'/'}>
                     <div className="flex justify-center items-center mt-[80px]">
@@ -20,7 +25,7 @@ const User_Data = () => {
                 </div>
                 <Form />
             </div>
-        </div>
+        </motion.div>
     )
 }
 
