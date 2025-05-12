@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../../public/image/Med.Ai.svg'
+import logo from '/image/Med.Ai.svg'
 import { motion, AnimatePresence } from 'framer-motion';
 import { NavLink } from 'react-router-dom'
 import DA_load from './animations/DA_load'
@@ -7,10 +7,10 @@ import DA_load from './animations/DA_load'
 const Loading = () => {
     return (
         <motion.div
-            initial={{ x: 300, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: -300, opacity: 0 }}
-            transition={{ type: "spring", stiffness: 100 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
         >
             <div className='flex flex-col px-[15px] relative h-screen w-screen bg-white'>
                 <div className='flex-1'>
