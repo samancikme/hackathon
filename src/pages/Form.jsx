@@ -39,15 +39,20 @@ const UserData = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [userId, setUserId] = useState(null);
-    const getUserId = async () => {
-        try {
-            const id = await Telegram.WebApp.CloudStorage.getItem("userId");
-            alert("Saqlangan ID: " + id);
-            setUserId(id);
-        } catch (err) {
-            alert("Xatolik: " + err.message);
+
+
+    const getUserId = () => {
+        const userId = Telegram.WebApp.initDataUnsafe?.user?.id;
+        if (userId) {
+            alert("Saqlangan ID: " + userId);
+            setUserId(userId);
+        } else {
+            alert("Foydalanuvchi ID topilmadi");
         }
     };
+
+
+
     const onSubmit = async (data) => {
         getUserId();
         console.log(userId);
