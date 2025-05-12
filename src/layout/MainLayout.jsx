@@ -16,6 +16,7 @@ const MainLayout = () => {
     // useEffect(() => {
     //     request()
     // },[])
+    // 
     return (
         <div className='flex h-screen w-screen justify-center select-none bg-white'>
             <Outlet />
