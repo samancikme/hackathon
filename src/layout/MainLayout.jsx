@@ -3,11 +3,13 @@ import { Outlet } from 'react-router-dom'
 import DA_hi from '../components/animations/DA_hi'
 
 const MainLayout = () => {
-    // useEffect(() => {
-    //     const tg = window.Telegram.WebApp;
-    //     const userId = tg.initDataUnsafe.user?.id;
-    //     alert("Sizning ID: " + userId);
-    // }, []);
+    useEffect(() => {
+        if (localStorage.getItem('userId')) {
+            const tg = window.Telegram.WebApp;
+            const userId = tg.initDataUnsafe.user?.id;
+            localStorage.setItem('userId', userId);
+        }
+    }, []);
     return (
         <div className='flex h-screen w-screen justify-center select-none bg-white'>
             <Outlet />

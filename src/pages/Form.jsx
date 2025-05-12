@@ -23,32 +23,41 @@ const UserData = () => {
     } = useForm({
         resolver: yupResolver(schema),
     });
-    const [data, setData] = useState(null);
+    const navigate = useNavigate();
+    const [UserData, setData] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const id = localStorage.getItem('userId');
 
 
-    const onSubmit = (data , id) => {
+    const onSubmit = (data, id) => {
         console.log(data);
 
         const URL = 'http://10.95.4.108:5000/user/consult'
-        const postData = async (URL) => {
+        const postData = async (URL, data) => {
             setLoading(true);
             setError(null);
             try {
-                const response = await axios.post(URL, { ...data, user_id: id });
-                setData(response.data);
+                const response = await axios.post(URL, { ...data, user_id: '321312' },
+                    {
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                    }
+                );
+                // setData(response.data);
+
+                localStorage.setItem('consultation', JSON.stringify(response.data));
             } catch (err) {
                 setError(err.response?.data?.message || err.message || "Noma'lum xato");
             } finally {
                 setLoading(false);
+                navigate('/consultation')
             }
         };
-        postData(data , id);
-        console.log(data)
+        postData(URL, data);
     };
-
+    // console.log(UserData);
     return (
         <>
             {loading ?
