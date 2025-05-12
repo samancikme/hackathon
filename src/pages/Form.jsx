@@ -15,10 +15,10 @@ const schema = yup.object().shape({
     life_style: yup.string().required("Опишите ваш образ жизни"),
 });
 const UserData = () => {
-    const tg = window.Telegram.WebApp;
-    const user = tg.initDataUnsafe.user;
+    // const tg = window.Telegram.WebApp;
+    // const user = tg.initDataUnsafe.user;
 
-    console.log("Foydalanuvchi Telegram ID si:", user.id);
+    // console.log("Foydalanuvchi Telegram ID si:", user.id);
 
     const navigate = useNavigate();
     const {
@@ -32,15 +32,21 @@ const UserData = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    const onSubmit = (data ,user) => {
+    const onSubmit = (data) => {
         console.log(data);
+        const user = tg?.initDataUnsafe?.user;
+        if (!user) {
+            alert("Foydalanuvchi ma'lumotlari topilmadi");
+            return;
+        }
+
         const postData = async () => {
             setLoading(true);
             setError(null);
             try {
                 const response = await axios.post(
                     'http://10.95.4.108:5000/user/',
-                    { ...data , user_id: user.id },
+                    { ...data, user_id: user.id },
                     {
                         headers: {
                             'Content-Type': 'application/json'
@@ -54,7 +60,7 @@ const UserData = () => {
                 setLoading(false);
             }
         };
-        postData(data , user);
+        postData(data);
     };
 
 
